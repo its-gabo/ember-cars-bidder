@@ -2,24 +2,24 @@
 === :red_car: ===
  - [x] Możliwość rejestracji użytkownika
  - [x] Możliwość logowania
- - [ ] Możliwość stworzenia 'aukcji':
-    - [ ] Marka pojazdu
-    - [ ] Model
-    - [ ] Data produkcji
-    - [ ] Silnik
-    - [ ] Stan pojazd (nowy/używany)
-    - [ ] Opis
-    - [ ] Cena wywoławcza
+ - [x] Możliwość stworzenia 'aukcji':
+    - [x] Marka pojazdu
+    - [x] Model
+    - [x] Data produkcji
+    - [x] Silnik
+    - [x] Stan pojazd (nowy/używany)
+    - [x] Opis
+    - [x] Cena wywoławcza
   - [ ] Możliwość udziału w aukcji
     - [ ] Cena przebicia
-  - [ ] Możliwość stworzenia 'kup teraz':
-    - [ ] Marka pojazdu
-    - [ ] Model
-    - [ ] Data produkcji
-    - [ ] Silnik
-    - [ ] Stan pojazd (nowy/uzywany)
-    - [ ] Opis
-    - [ ] Cena
+  - [x] Możliwość stworzenia 'kup teraz':
+    - [x] Marka pojazdu
+    - [x] Model
+    - [x] Data produkcji
+    - [x] Silnik
+    - [x] Stan pojazd (nowy/uzywany)
+    - [x] Opis
+    - [x] Cena
  - [ ] Dashboard: 
    - [ ] Ilość otwartych aukcji
    - [ ] Ostatnia zakończona aukcja
