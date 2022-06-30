@@ -3,7 +3,11 @@
 module.exports = {
   content: ['./app/**/*.hbs'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        poppins: 'Poppins',
+      },
+    },
   },
   plugins: [],
 };
