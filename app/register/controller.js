@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
 
 export default class RegisterController extends Controller {
   @service store;
@@ -39,6 +40,18 @@ export default class RegisterController extends Controller {
   @action
   async onSubmit(event) {
     event.preventDefault();
+
+    const { username, surname, nickname, email, phoneNumber } = this.model;
+
+    if (
+      isEmpty(username) ||
+      isEmpty(surname) ||
+      isEmpty(nickname) ||
+      isEmpty(email) ||
+      isEmpty(phoneNumber)
+    ) {
+      return;
+    }
 
     await this.model.save();
 
