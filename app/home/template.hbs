@@ -1,2 +1,18 @@
-{{page-title "Home"}}
+{{page-title 'Home'}}
+<div
+  class='min-h-screen w-screen bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins'
+>
+  <div>
+    <p class='text-white leading-10'>
+      <span class='text-lg md:text-2xl'>Witaj w</span><br />
+      <span class='text-3xl md:text-6xl font-semibold'>Ember Cars Bidder</span>
+    </p>
+    <button
+      class='mt-12 px-5 py-2 bg-white text-black text-base rounded'
+      type='button'
+    >
+      <LinkTo @route='dashboard'>Przejdź do dashboardu</LinkTo>
+    </button>
+  </div>
+</div>
 {{outlet}}
