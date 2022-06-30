@@ -13,5 +13,6 @@ export default class OfferModel extends Model {
   createdAt;
   @attr('date') endsAt;
   @attr('string') type;
+  @attr('number') price;
   @hasMany('bid') bids;
 }
