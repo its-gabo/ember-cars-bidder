@@ -41,10 +41,10 @@ export default class RegisterController extends Controller {
   async onSubmit(event) {
     event.preventDefault();
 
-    const { username, surname, nickname, email, phoneNumber } = this.model;
+    const { name, surname, nickname, email, phoneNumber } = this.model;
 
     if (
-      isEmpty(username) ||
+      isEmpty(name) ||
       isEmpty(surname) ||
       isEmpty(nickname) ||
       isEmpty(email) ||
