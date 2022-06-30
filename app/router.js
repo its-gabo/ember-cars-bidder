@@ -18,4 +18,5 @@ Router.map(function () {
   this.route('offer', function () {
     this.route('show', { path: ':cars_name' });
   });
+  this.route('dashboard');
 });
