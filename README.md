@@ -1,7 +1,7 @@
 ### Cars Bidder
 === :red_car: ===
- - [ ] Możliwość rejestracji użytkownika
- - [ ] Możliwość logowania
+ - [x] Możliwość rejestracji użytkownika
+ - [x] Możliwość logowania
  - [ ] Możliwość stworzenia 'aukcji':
     - [ ] Marka pojazdu
     - [ ] Model
