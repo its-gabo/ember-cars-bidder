@@ -16,7 +16,7 @@ Router.map(function () {
   this.route('settings');
   this.route('offers');
   this.route('offer', function () {
-    this.route('show', { path: ':cars_name' });
+    this.route('show', { path: ':id' });
   });
   this.route('dashboard');
 });
