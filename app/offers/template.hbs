@@ -4,6 +4,7 @@
   class='py-7 min-h-screen bg-gradient-to-tr from-red-300 to-blue-400 flex flex-col justify-center items-center font-poppins gap-y-5'
 >
   <form
+    id="offersForm"
     class='flex flex-col gap-y-5 bg-white p-10 rounded-lg lg:min-w-[350px] lg:gap-y-7'
     action=''
     autocomplete='off'
@@ -91,10 +92,16 @@
         {{on 'input' this.onDescriptionChange}}
       ></textarea>
     </section>
-    <button
-      class='bg-blue-400 text-white py-1 rounded-lg mt-7'
-      type='submit'
-    >Dodaj</button>
+    <div class="flex gap-x-3">
+      <button
+        class='bg-red-300 text-white py-1 rounded-lg mt-7 flex-grow '
+        type='reset'
+      >Reset</button>
+      <button
+        class='bg-blue-400 text-white py-1 rounded-lg mt-7 flex-grow'
+        type='submit'
+      >Dodaj</button>
+    </div>
   </form>
   {{#each this.model as |offer|}}
     <LinkTo @route="offer.show" @model={{offer}}>

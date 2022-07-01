@@ -72,6 +72,8 @@ export default class RegisterController extends Controller {
       return;
     }
 
+    document.querySelector('#offersForm').reset();
+
     this.store
       .createRecord('offer', {
         brand: this.brand,
