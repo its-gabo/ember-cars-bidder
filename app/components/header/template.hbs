@@ -6,7 +6,14 @@
   </div>
   <div class='flex gap-x-5'>
     {{#if this.shouldDisplayButtons}}
-      <LinkTo @route='settings'>Settings</LinkTo>
+      <div>
+        <LinkTo @route='settings'>Settings</LinkTo>
+        <button
+          class='ml-4 bg-red-200 px-4 py-2 rounded-lg'
+          type='button'
+          {{on 'click' this.onLogout}}
+        >Wyloguj</button>
+      </div>
     {{else}}
       <LinkTo
         class='bg-blue-400 rounded-lg px-4 py-2 text-white'

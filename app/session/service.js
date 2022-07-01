@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 
 export default class SessionService extends Service {
   @service store;
+  @service router;
   @storageFor('logged-user') loggedUser;
 
   async currentUser() {
@@ -27,5 +28,10 @@ export default class SessionService extends Service {
 
     this.loggedUser.set('id', user.id);
     window.location.href = '/offers';
+  }
+
+  logoutUser() {
+    this.loggedUser.set('id', null);
+    this.router.transitionTo('home');
   }
 }
