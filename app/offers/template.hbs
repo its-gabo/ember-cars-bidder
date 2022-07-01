@@ -3,7 +3,7 @@
 <div
   class='py-7 min-h-screen bg-gradient-to-tr from-red-300 to-blue-400 flex flex-col justify-center items-center font-poppins gap-y-5'
 >
-  {{#if this.isUserLoggedIn}}
+  {{#if this.session.isUserLoggedIn}}
   <form
     id="offersForm"
     class='flex flex-col gap-y-5 bg-white p-10 rounded-lg lg:min-w-[350px] lg:gap-y-7'
@@ -108,21 +108,21 @@
     <p class="bg-white rounded-lg px-7 py-3">Aby stworzyć ofertę musisz się zalogować</p>
   {{/if}}
   {{#if this.doOffersExist}}
-  {{#each this.model as |offer|}}
-    <LinkTo @route="offer.show" @model={{offer}}>
-        <div class="bg-white w-[85vw] rounded-lg px-7 py-3 flex flex-col justify-center">
-            <div class="flex justify-between">
-              <p class="text-lg">{{offer.brand}} {{offer.model}}, {{offer.yearOfProduction}}</p>
-              <p class="text-lg">${{offer.price}}</p>
-            </div>
-            <div class="text-sm">
-              <p>Stan: {{offer.condition}}</p>
-              <p>Silnik: {{offer.engine}}</p>
-              <p class="overflow-hidden">Opis: {{offer.description}}</p>
-            </div>
-        </div>
-    </LinkTo>
-  {{/each}}
+    {{#each this.model as |offer|}}
+      <LinkTo @route="offer.show" @model={{offer}}>
+          <div class="bg-white w-[85vw] rounded-lg px-7 py-3 flex flex-col justify-center">
+              <div class="flex justify-between">
+                <p class="text-lg">{{offer.brand}} {{offer.model}}, {{offer.yearOfProduction}}</p>
+                <p class="text-lg">${{offer.price}}</p>
+              </div>
+              <div class="text-sm">
+                <p>Stan: {{offer.condition}}</p>
+                <p>Silnik: {{offer.engine}}</p>
+                <p class="overflow-hidden">Opis: {{offer.description}}</p>
+              </div>
+          </div>
+      </LinkTo>
+    {{/each}}
   {{else}}
     <p class="bg-white rounded-lg px-7 py-3">Brak istniejących ofert</p>
   {{/if}}

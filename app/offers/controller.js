@@ -16,6 +16,10 @@ export default class RegisterController extends Controller {
   @tracked offerType = 'buy_now';
   @tracked description;
 
+  get doOffersExist() {
+    return this.model.length > 0 ? true : false;
+  }
+
   @action
   onBrandChange({ target: { value } }) {
     this.brand = value;
@@ -62,7 +66,7 @@ export default class RegisterController extends Controller {
 
     if (
       isEmpty(this.brand) ||
-      isEmpty(this.model) ||
+      isEmpty(this.carModel) ||
       isEmpty(this.yearOfProduction) ||
       isEmpty(this.engine) ||
       isEmpty(this.condition) ||
@@ -74,7 +78,7 @@ export default class RegisterController extends Controller {
 
     document.querySelector('#offersForm').reset();
 
-    this.store
+    await this.store
       .createRecord('offer', {
         brand: this.brand,
         model: this.carModel,
@@ -84,7 +88,7 @@ export default class RegisterController extends Controller {
         price: this.price,
         type: this.offerType,
         description: this.description,
-        owner: this.session.currentUser(),
+        owner: await this.session.currentUser(),
       })
       .save();
   }

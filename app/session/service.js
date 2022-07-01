@@ -6,10 +6,8 @@ export default class SessionService extends Service {
   @service store;
   @storageFor('logged-user') loggedUser;
 
-  currentUser() {
-    return this.store.query('user', {
-      filter: { id: this.loggedUser.get('id') },
-    }).firstObject;
+  async currentUser() {
+    return await this.store.findRecord('user', this.loggedUser.get('id'));
   }
 
   get isUserLoggedIn() {
