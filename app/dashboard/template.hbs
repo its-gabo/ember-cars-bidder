@@ -1,8 +1,8 @@
 {{page-title "Dashboard"}}
 <Header />
 <div class='py-7 min-h-screen bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins text-black text-lg lg:text-2xl'>
-    <div class="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-4 gap-5">
-        <div class="lg:row-start-1 lg:row-end-5 grid-element flex flex-col items-center gap-y-5">
+    <div class="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-5">
+        <div class="lg:row-start-1 lg:row-end-4 grid-element flex flex-col items-center gap-y-5">
             <p class="font-medium">Najdrożej sprzedany samochód</p>
             <div class="w-full h-full flex flex-col justify-center">
                 <img class="rounded-lg overflow-hidden max-h-96 lg:max-h-[500px] w-full object-cover" src="https://images.cdn.circlesix.co/image/1/700/0/uploads/posts/2019/03/f2988d5d8adbb026a7b0326d04ba0b4f.jpg" alt="mazda miata">
@@ -14,12 +14,9 @@
         </div>
         <div class="lg:col-start-2 lg:col-end-5 grid-element flex justify-between items-center">
             <p class="font-medium">Ilość otwartych aukcji</p>
-            <span class="px-4 py-2 rounded-lg bg-gradient-to-tr from-red-300 to-blue-400 text-white text-base lg:text-lg lg:px-10">19</span>
+            <span class="px-4 py-2 rounded-lg bg-gradient-to-tr from-red-300 to-blue-400 text-white text-base lg:text-lg lg:px-10">{{this.model.length}}</span>
         </div>
-        <div class="lg:col-start-2 lg:col-end-5 lg:row-start-2 lg:row-end-4 grid-element">
-            <p class="font-medium">Wykres zakończonych aukcji</p>
-        </div>
-        <div class="lg:col-start-2 lg:col-end-5 grid-element text-base">
+        <div class="lg:col-start-2 lg:col-end-5 lg:row-start-2 lg:row-end-4 grid-element text-base">
             <p class="text-lg lg:text-2xl font-medium mb-5">Ostatnia zakończona aukcja</p>
             <p>Data zakończenia: 30-06-2022</p>
             <p>Marka: Ford</p>
