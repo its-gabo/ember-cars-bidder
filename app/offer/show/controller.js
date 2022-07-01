@@ -50,7 +50,9 @@ export default class OfferShowController extends Controller {
       return;
     }
 
+    this.model.set('endsAt', new Date());
     this.model.set('isActive', false);
+    this.model.save();
     this.router.transitionTo('offers');
   }
 
@@ -65,11 +67,13 @@ export default class OfferShowController extends Controller {
     }
 
     if (await this.isBidHighest(this.bid)) {
-      this.store.createRecord('bid', {
-        value: this.bid,
-        offer: this.model,
-        user: await this.session.currentUser(),
-      });
+      this.store
+        .createRecord('bid', {
+          value: this.bid,
+          offer: this.model,
+          user: await this.session.currentUser(),
+        })
+        .save();
     }
   }
 }
