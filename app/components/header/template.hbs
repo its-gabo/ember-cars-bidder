@@ -1,15 +1,21 @@
-<div class="py-3 px-7 text-lg flex justify-between">
-    <div class="flex gap-x-5 items-center">
-        <LinkTo @route="home">Home</LinkTo>
-        <LinkTo @route="dashboard">Dashboard</LinkTo>
-        <LinkTo @route="offers">Oferty</LinkTo>
-    </div>
-    <div class="flex gap-x-5">
-        {{#if this.shouldDisplayButtons}}
-        <LinkTo @route="settings">Settings</LinkTo>
-        {{else}}
-            <button class="bg-blue-400 rounded-lg px-4 py-2 text-white" type="button">Zaloguj</button>
-            <button class="bg-gradient-to-tr from-red-300 to-blue-400 text-white rounded-lg px-4 py-2" type="button">Zarejestruj</button>
-        {{/if}}
-    </div>
+<div class='py-3 px-7 text-lg flex justify-between'>
+  <div class='flex gap-x-5 items-center'>
+    <LinkTo @route='home'>Home</LinkTo>
+    <LinkTo @route='dashboard'>Dashboard</LinkTo>
+    <LinkTo @route='offers'>Oferty</LinkTo>
+  </div>
+  <div class='flex gap-x-5'>
+    {{#if this.shouldDisplayButtons}}
+      <LinkTo @route='settings'>Settings</LinkTo>
+    {{else}}
+      <LinkTo
+        class='bg-blue-400 rounded-lg px-4 py-2 text-white'
+        @route='login'
+      >Zaloguj</LinkTo>
+      <LinkTo
+        class='bg-gradient-to-tr from-red-300 to-blue-400 text-white rounded-lg px-4 py-2'
+        @route='register'
+      >Zarejestruj</LinkTo>
+    {{/if}}
+  </div>
 </div>
