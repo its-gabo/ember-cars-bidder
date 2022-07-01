@@ -4,17 +4,20 @@
     <div class="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-5">
         <div class="lg:row-start-1 lg:row-end-4 grid-element flex flex-col items-center gap-y-5">
             <p class="font-medium">Najdrożej sprzedany samochód</p>
+            {{#if this.doUnactiveOffersExist}}
             <div class="w-full h-full flex flex-col justify-center">
-                <img class="rounded-lg overflow-hidden max-h-96 lg:max-h-[500px] w-full object-cover" src="https://images.cdn.circlesix.co/image/1/700/0/uploads/posts/2019/03/f2988d5d8adbb026a7b0326d04ba0b4f.jpg" alt="mazda miata">
                 <div class="text-base flex justify-between lg:text-lg mt-5">
-                    <p>Mazda Miata</p>
-                    <p>$27,300</p>
+                    <p>{{this.carBrand}} {{this.carModel}}</p>
+                    <p>${{this.carPrice}}</p>
                 </div>
             </div>
+            {{else}}
+                <p>Brak ofert</p>
+            {{/if}}
         </div>
         <div class="lg:col-start-2 lg:col-end-5 grid-element flex justify-between items-center">
             <p class="font-medium">Ilość otwartych aukcji</p>
-            <span class="px-4 py-2 rounded-lg bg-gradient-to-tr from-red-300 to-blue-400 text-white text-base lg:text-lg lg:px-10">{{this.model.length}}</span>
+            <span class="px-4 py-2 rounded-lg bg-gradient-to-tr from-red-300 to-blue-400 text-white text-base lg:text-lg lg:px-10">{{this.numberOfActiveOffers}}</span>
         </div>
         <div class="lg:col-start-2 lg:col-end-5 lg:row-start-2 lg:row-end-4 grid-element text-base">
             <p class="text-lg lg:text-2xl font-medium mb-5">Ostatnia zakończona aukcja</p>
