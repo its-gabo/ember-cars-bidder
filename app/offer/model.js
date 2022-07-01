@@ -11,6 +11,7 @@ export default class OfferModel extends Model {
   @attr('date') endsAt;
   @attr('string') type;
   @attr('number') price;
+  @attr('boolean', { defaultValue: true }) isActive;
   @hasMany('bid') bids;
   @belongsTo('user') owner;
 }

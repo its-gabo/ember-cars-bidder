@@ -109,6 +109,7 @@
   {{/if}}
   {{#if this.doOffersExist}}
     {{#each this.model as |offer|}}
+      {{#if offer.isActive}}
       <LinkTo @route="offer.show" @model={{offer}}>
           <div class="bg-white w-[85vw] rounded-lg px-7 py-3 flex flex-col justify-center">
               <div class="flex justify-between">
@@ -122,6 +123,7 @@
               </div>
           </div>
       </LinkTo>
+      {{/if}}
     {{/each}}
   {{else}}
     <p class="bg-white rounded-lg px-7 py-3">Brak istniejących ofert</p>

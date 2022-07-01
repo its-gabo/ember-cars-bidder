@@ -7,6 +7,7 @@ import { tracked } from '@glimmer/tracking';
 export default class OfferShowController extends Controller {
   @service store;
   @service session;
+  @service router;
   @tracked bid;
 
   async isUserAnAuthor() {
@@ -41,6 +42,16 @@ export default class OfferShowController extends Controller {
   @action
   onBidChange({ target: { value } }) {
     this.bid = value;
+  }
+
+  @action
+  async onBuyNow() {
+    if (await this.isUserAnAuthor()) {
+      return;
+    }
+
+    this.model.set('isActive', false);
+    this.router.transitionTo('offers');
   }
 
   @action
