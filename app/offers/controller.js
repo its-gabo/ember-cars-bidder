@@ -8,7 +8,7 @@ export default class RegisterController extends Controller {
   @service store;
   @service session;
   @tracked brand;
-  @tracked model;
+  @tracked carModel;
   @tracked yearOfProduction;
   @tracked engine;
   @tracked condition;
@@ -23,7 +23,7 @@ export default class RegisterController extends Controller {
 
   @action
   onModelChange({ target: { value } }) {
-    this.model = value;
+    this.carModel = value;
   }
 
   @action
@@ -49,7 +49,6 @@ export default class RegisterController extends Controller {
   @action
   onOfferTypeChange({ target: { value } }) {
     this.offerType = value;
-    console.log(this.offerType);
   }
 
   @action
@@ -76,7 +75,7 @@ export default class RegisterController extends Controller {
     this.store
       .createRecord('offer', {
         brand: this.brand,
-        model: this.model,
+        model: this.carModel,
         yearOfProduction: this.yearOfProduction,
         engine: this.engine,
         condition: this.condition,
