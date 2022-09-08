@@ -53,6 +53,11 @@ export default class AddOfferController extends Controller {
   }
 
   @action
+  onPhotoUrlChange({ target: { value } }) {
+    this.car.photoUrl = value;
+  }
+
+  @action
   async onSubmit(event) {
     event.preventDefault();
 
@@ -63,7 +68,8 @@ export default class AddOfferController extends Controller {
       isEmpty(this.car.engine) ||
       isEmpty(this.car.condition) ||
       isEmpty(this.car.price) ||
-      isEmpty(this.car.description)
+      isEmpty(this.car.description) ||
+      isEmpty(this.car.photoUrl)
     ) {
       return;
     }

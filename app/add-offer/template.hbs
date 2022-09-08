@@ -1,11 +1,11 @@
-{{page-title "Add offer"}}
-<div class="min-h-screen flex flex-col">
+{{page-title 'Add offer'}}
+<div class='min-h-screen flex flex-col'>
   <Header />
   <div
     class='py-7 grow bg-gradient-to-tr from-red-300 to-blue-400 flex flex-col justify-center items-center font-poppins gap-y-5'
   >
     <form
-      id="offersForm"
+      id='offersForm'
       class='flex flex-col gap-y-5 bg-white p-10 rounded-lg lg:min-w-[350px] lg:gap-y-7'
       action=''
       autocomplete='off'
@@ -84,6 +84,15 @@
         </section>
       </div>
       <section class='flex flex-col w-full'>
+        <label for='photoUrl'>Link do zdjęcia:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='text'
+          id='photoUrl'
+          {{on 'input' this.onPhotoUrlChange}}
+        />
+      </section>
+      <section class='flex flex-col w-full'>
         <label for='description'>Opis:</label>
         <textarea
           class='bg-blue-200 rounded-md px-1 resize-none'
@@ -93,9 +102,9 @@
           {{on 'input' this.onDescriptionChange}}
         ></textarea>
       </section>
-      <div class="flex gap-x-3">
+      <div class='flex gap-x-3'>
         <button
-          class='bg-red-300 text-white py-1 rounded-lg mt-7 flex-grow '
+          class='bg-red-300 text-white py-1 rounded-lg mt-7 flex-grow'
           type='reset'
         >Reset</button>
         <button

@@ -8,16 +8,19 @@
       {{#each this.model as |offer|}}
         {{#if offer.isActive}}
         <LinkTo @route="offer.show" @model={{offer}}>
-            <div class="bg-white w-[85vw] rounded-lg px-7 py-3 flex flex-col justify-center">
-                <div class="flex justify-between">
-                  <p class="text-lg">{{offer.brand}} {{offer.model}}, {{offer.yearOfProduction}}</p>
-                  <p class="text-lg">${{offer.price}}</p>
-                </div>
-                <div class="text-sm">
-                  <p>Stan: {{offer.condition}}</p>
-                  <p>Silnik: {{offer.engine}}</p>
-                  <p class="overflow-hidden">Opis: {{offer.description}}</p>
-                </div>
+            <div class="flex bg-white w-[85vw] rounded-lg px-7 py-3">
+              <img src={{offer.photoUrl}} alt={{offer.brand}} class="w-[10vw] aspect-auto object-fill mr-8">
+              <div class="grow flex flex-col">
+                  <div class="flex justify-between">
+                    <p class="text-lg">{{offer.brand}} {{offer.model}}, {{offer.yearOfProduction}}</p>
+                    <p class="text-lg">${{offer.price}}</p>
+                  </div>
+                  <div class="text-sm">
+                    <p>Stan: {{offer.condition}}</p>
+                    <p>Silnik: {{offer.engine}}</p>
+                    <p class="overflow-hidden">Opis: {{offer.description}}</p>
+                  </div>
+              </div>
             </div>
         </LinkTo>
         {{/if}}
