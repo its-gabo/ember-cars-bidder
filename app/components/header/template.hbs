@@ -3,6 +3,9 @@
     <LinkTo @route='home'>Home</LinkTo>
     <LinkTo @route='dashboard'>Dashboard</LinkTo>
     <LinkTo @route='offers'>Oferty</LinkTo>
+    {{#if this.shouldDisplayButtons}}
+      <LinkTo @route='add-offer'>Dodaj ofertę</LinkTo>
+    {{/if}}
   </div>
   <div class='flex gap-x-5'>
     {{#if this.shouldDisplayButtons}}

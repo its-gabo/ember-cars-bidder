@@ -1,0 +1,110 @@
+{{page-title "Add offer"}}
+<div class="min-h-screen flex flex-col">
+  <Header />
+  <div
+    class='py-7 grow bg-gradient-to-tr from-red-300 to-blue-400 flex flex-col justify-center items-center font-poppins gap-y-5'
+  >
+    <form
+      id="offersForm"
+      class='flex flex-col gap-y-5 bg-white p-10 rounded-lg lg:min-w-[350px] lg:gap-y-7'
+      action=''
+      autocomplete='off'
+      {{on 'submit' this.onSubmit}}
+    >
+      <h2 class='w-full text-center mb-5 font-semibold text-xl'>Dodaj ofertę</h2>
+      <div class='flex gap-x-3'>
+        <section class='flex flex-col'>
+          <label for='brand'>Marka:</label>
+          <input
+            class='bg-blue-200 rounded-md px-1'
+            type='text'
+            id='brand'
+            {{on 'input' this.onBrandChange}}
+          />
+        </section>
+        <section class='flex flex-col'>
+          <label for='model'>Model:</label>
+          <input
+            class='bg-blue-200 rounded-md px-1'
+            type='text'
+            id='model'
+            {{on 'input' this.onModelChange}}
+          />
+        </section>
+        <section class='flex flex-col'>
+          <label for='yearOfProduction'>Rok produkcji:</label>
+          <input
+            class='bg-blue-200 rounded-md px-1'
+            type='number'
+            id='yearOfProduction'
+            {{on 'input' this.onYearOfProductionChange}}
+          />
+        </section>
+      </div>
+      <div class='flex gap-x-3'>
+        <section class='flex flex-col'>
+          <label for='engine'>Silnik:</label>
+          <input
+            class='bg-blue-200 rounded-md px-1'
+            type='text'
+            id='engine'
+            {{on 'input' this.onEngineChange}}
+          />
+        </section>
+        <section class='flex flex-col'>
+          <label for='condition'>Stan pojazdu:</label>
+          <input
+            class='bg-blue-200 rounded-md px-1'
+            type='text'
+            id='condition'
+            {{on 'input' this.onConditionChange}}
+          />
+        </section>
+        <section class='flex flex-col'>
+          <label for='price'>Cena:</label>
+          <input
+            class='bg-blue-200 rounded-md px-1'
+            type='number'
+            id='price'
+            {{on 'input' this.onPriceChange}}
+          />
+        </section>
+      </div>
+      <div class='flex gap-x-3'>
+        <section class='flex flex-col w-full'>
+          <label for='offerType'>Typ oferty:</label>
+          <select
+            id='offerType'
+            class='bg-blue-200 rounded-md px-1'
+            {{on 'change' this.onOfferTypeChange}}
+          >
+            <option value='buy_now'>Kup teraz</option>
+            <option value='auction'>Aukcja</option>
+          </select>
+        </section>
+      </div>
+      <section class='flex flex-col w-full'>
+        <label for='description'>Opis:</label>
+        <textarea
+          class='bg-blue-200 rounded-md px-1 resize-none'
+          id='description'
+          cols='30'
+          rows='10'
+          {{on 'input' this.onDescriptionChange}}
+        ></textarea>
+      </section>
+      <div class="flex gap-x-3">
+        <button
+          class='bg-red-300 text-white py-1 rounded-lg mt-7 flex-grow '
+          type='reset'
+        >Reset</button>
+        <button
+          class='bg-blue-400 text-white py-1 rounded-lg mt-7 flex-grow'
+          type='submit'
+        >Dodaj</button>
+      </div>
+    </form>
+  </div>
+  <Footer />
+</div>
+{{outlet}}

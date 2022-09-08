@@ -19,4 +19,5 @@ Router.map(function () {
     this.route('show', { path: ':id' });
   });
   this.route('dashboard');
+  this.route('add-offer');
 });
