@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 @layer components {
-    .grid-element {
+    .dashboard-element {
         background-color: theme('colors.white');
         border-radius: theme('borderRadius.lg');
         padding: theme('padding.5');

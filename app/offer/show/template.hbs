@@ -1,41 +1,43 @@
 {{page-title 'Show'}}
-<Header />
-<div
-  class='py-7 min-h-screen bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins'
->
+<div class="min-h-screen flex flex-col">
+  <Header />
   <div
-    class='py-7 px-10 bg-white rounded-lg w-4/5 min-w-[300px] max-w-[1000px]'
+    class='py-7 grow bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins'
   >
-    <p class='text-xl font-semibold mb-5'>{{this.model.brand}}
-      {{this.model.model}}</p>
-    <p>Autor aukcji: {{this.model.owner.name}} {{this.model.owner.surname}}</p>
-    <p>Cena: ${{this.model.price}}</p>
-    <p>Rok produkcji: {{this.model.yearOfProduction}}</p>
-    <p>Stan pojazdu: {{this.model.condition}}</p>
-    <p>Opis pojazdu: {{this.model.description}}</p>
-    {{#if this.isOfferAnAuction}}
-      <div class='mt-7 bg-blue-400 px-7 py-4 rounded-lg'>
-        <label class='text-lg' for='price'>Cena licytacji: </label>
-        <input
-          type='number'
-          id='price'
-          class='rounded-lg pl-2'
-          {{on 'input' this.onBidChange}}
-        /><br />
+    <div
+      class='py-7 px-10 bg-white rounded-lg w-4/5 min-w-[300px] max-w-[1000px]'
+    >
+      <p class='text-xl font-semibold mb-5'>{{this.model.brand}}
+        {{this.model.model}}</p>
+      <p>Autor aukcji: {{this.model.owner.name}} {{this.model.owner.surname}}</p>
+      <p>Cena: ${{this.model.price}}</p>
+      <p>Rok produkcji: {{this.model.yearOfProduction}}</p>
+      <p>Stan pojazdu: {{this.model.condition}}</p>
+      <p>Opis pojazdu: {{this.model.description}}</p>
+      {{#if this.isOfferAnAuction}}
+        <div class='mt-7 bg-blue-400 px-7 py-4 rounded-lg'>
+          <label class='text-lg' for='price'>Cena licytacji: </label>
+          <input
+            type='number'
+            id='price'
+            class='rounded-lg pl-2'
+            {{on 'input' this.onBidChange}}
+          /><br />
+          <button
+            class='bg-white py-2 px-4 rounded-lg mt-4'
+            type='button'
+            {{on 'click' this.onSubmit}}
+          >Licytuj</button>
+        </div>
+      {{else}}
         <button
-          class='bg-white py-2 px-4 rounded-lg mt-4'
+          class='bg-blue-400 mt-7 py-2 px-4 text-white rounded-lg'
           type='button'
-          {{on 'click' this.onSubmit}}
-        >Licytuj</button>
-      </div>
-    {{else}}
-      <button
-        class='bg-blue-400 mt-7 py-2 px-4 text-white rounded-lg'
-        type='button'
-        {{on 'click' this.onBuyNow}}
-      >Kup teraz</button>
-    {{/if}}
+          {{on 'click' this.onBuyNow}}
+        >Kup teraz</button>
+      {{/if}}
+    </div>
   </div>
+  <Footer />
 </div>
-<Footer />
 {{outlet}}

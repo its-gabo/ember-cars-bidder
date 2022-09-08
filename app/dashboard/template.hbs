@@ -1,32 +1,39 @@
-{{page-title "Dashboard"}}
-<Header />
-<div class='py-7 min-h-screen bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins text-black text-lg lg:text-2xl'>
-    <div class="flex flex-col lg:grid lg:grid-cols-3 lg:grid-rows-3 gap-5">
-        <div class="lg:row-start-1 lg:row-end-4 grid-element flex flex-col items-center gap-y-5">
-            <p class="font-medium">Najdrożej sprzedany samochód</p>
-            {{#if this.doUnactiveOffersExist}}
-            <div class="w-full h-full flex flex-col justify-center">
-                <div class="text-base flex justify-between lg:text-lg mt-5">
-                    <p>{{this.carBrand}} {{this.carModel}}</p>
-                    <p>${{this.carPrice}}</p>
-                </div>
-            </div>
-            {{else}}
-                <p>Brak ofert</p>
-            {{/if}}
-        </div>
-        <div class="lg:col-start-2 lg:col-end-5 grid-element flex justify-between items-center">
-            <p class="font-medium">Ilość otwartych aukcji</p>
-            <span class="px-4 py-2 rounded-lg bg-gradient-to-tr from-red-300 to-blue-400 text-white text-base lg:text-lg lg:px-10">{{this.numberOfActiveOffers}}</span>
-        </div>
-        <div class="lg:col-start-2 lg:col-end-5 lg:row-start-2 lg:row-end-4 grid-element text-base">
-            <p class="text-lg lg:text-2xl font-medium mb-5">Ostatnia zakończona aukcja</p>
-            <p>Data zakończenia: 30-06-2022</p>
-            <p>Marka: Ford</p>
-            <p>Model: Mustang GT</p>
-            <p>Cena końcowa: $25,000</p>
-        </div>
+{{page-title 'Dashboard'}}
+<div class='min-h-screen flex flex-col'>
+  <Header />
+  <div
+    class='py-7 grow bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins text-black text-lg lg:text-2xl'
+  >
+    <div class='flex flex-col gap-y-4'>
+      <div class='dashboard-element flex flex-col items-center gap-y-5'>
+        <p class='font-medium'>Najdrożej sprzedany samochód</p>
+        {{#if this.doUnactiveOffersExist}}
+          <div class='text-base flex justify-between mt-5'>
+            <p>{{this.carBrand}} {{this.carModel}}</p>
+            <p>${{this.carPrice}}</p>
+          </div>
+        {{else}}
+          <p class="text-lg">Brak sprzedanych samochodów</p>
+        {{/if}}
+      </div>
+      <div class="dashboard-element flex justify-between items-center">
+        <p class='font-medium'>Ilość otwartych aukcji</p>
+        <span
+          class='px-4 py-2 rounded-lg bg-gradient-to-tr from-red-300 to-blue-400 text-white text-base lg:text-lg'
+        >{{this.numberOfActiveOffers}}</span>
+      </div>
+      <div
+        class='dashboard-element text-base'
+      >
+        <p class='text-lg lg:text-2xl font-medium mb-5'>Ostatnia zakończona
+          aukcja</p>
+        <p>Data zakończenia: 30-06-2022</p>
+        <p>Marka: Ford</p>
+        <p>Model: Mustang GT</p>
+        <p>Cena końcowa: $25,000</p>
+      </div>
     </div>
+  </div>
+  <Footer />
 </div>
-<Footer />
 {{outlet}}
