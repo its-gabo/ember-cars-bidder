@@ -35,7 +35,7 @@ export default class DashboardController extends Controller {
     let highestPrice = 0;
 
     if (this.unactiveBuyNowOffers.length == 1) {
-      return this.unactiveOffers[0].get('price');
+      return this.unactiveBuyNowOffers[0].get('price');
     }
 
     this.unactiveBuyNowOffers.forEach((element) => {

@@ -7,12 +7,10 @@
       <span class='text-lg md:text-2xl'>Witaj w</span><br />
       <span class='text-3xl md:text-6xl font-semibold'>Ember Cars Bidder</span>
     </p>
-    <button
-      class='mt-12 px-5 py-2 bg-white text-black text-base rounded'
-      type='button'
-    >
-      <LinkTo @route='dashboard'>Przejdź do dashboardu</LinkTo>
-    </button>
+    <LinkTo
+      class='mt-10 block w-fit px-5 py-2 bg-white text-black text-base rounded'
+      @route='dashboard'
+    >Przejdź do dashboardu</LinkTo>
   </div>
 </div>
 {{outlet}}
