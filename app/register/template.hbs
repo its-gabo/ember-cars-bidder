@@ -1,74 +1,76 @@
 {{page-title 'Register'}}
-<Header />
-<div
-  class='min-h-screen bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins text-black'
->
-  <form
-    class='my-10 flex flex-col gap-y-5 bg-white p-10 rounded-lg lg:min-w-[350px] lg:gap-y-7'
-    action=''
-    autocomplete='off'
-    {{on 'submit' this.onSubmit}}
+<div class='min-h-screen flex flex-col'>
+  <Header />
+  <div
+    class='grow bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins text-black'
   >
-    <h2 class='w-full text-center mb-5 font-semibold text-xl'>Zarejestruj się</h2>
-    <section class='flex flex-col'>
-      <label for='name'>Imię:</label>
-      <input
-        class='bg-blue-200 rounded-md px-1'
-        type='text'
-        id='name'
-        {{on 'input' this.onNameChange}}
-      />
-    </section>
-    <section class='flex flex-col'>
-      <label for='surname'>Nazwisko:</label>
-      <input
-        class='bg-blue-200 rounded-md px-1'
-        type='text'
-        id='surname'
-        {{on 'input' this.onSurnameChange}}
-      />
-    </section>
-    <section class='flex flex-col'>
-      <label for='nickname'>Nickname:</label>
-      <input
-        class='bg-blue-200 rounded-md px-1'
-        type='text'
-        id='nickname'
-        {{on 'input' this.onNicknameChange}}
-      />
-    </section>
-    <section class='flex flex-col'>
-      <label for='email'>Email:</label>
-      <input
-        class='bg-blue-200 rounded-md px-1'
-        type='text'
-        id='email'
-        {{on 'input' this.onEmailChange}}
-      />
-    </section>
-    <section class='flex flex-col'>
-      <label for='password'>Hasło:</label>
-      <input
-        class='bg-blue-200 rounded-md px-1'
-        type='password'
-        id='password'
-        {{on 'input' this.onPasswordChange}}
-      />
-    </section>
-    <section class='flex flex-col'>
-      <label for='phoneNumber'>Numer telefonu:</label>
-      <input
-        class='bg-blue-200 rounded-md px-1'
-        type='number'
-        id='phoneNumber'
-        {{on 'input' this.onPhoneNumberChange}}
-      />
-    </section>
-    <button
-      class='bg-blue-400 text-white py-1 rounded-lg mt-7'
-      type='submit'
-    >Zarejestruj</button>
-  </form>
+    <form
+      class='my-10 flex flex-col gap-y-5 bg-white p-10 rounded-lg lg:min-w-[350px] lg:gap-y-7'
+      action=''
+      autocomplete='off'
+      {{on 'submit' this.onSubmit}}
+    >
+      <h2 class='w-full text-center mb-5 font-semibold text-xl'>Zarejestruj się</h2>
+      <section class='flex flex-col'>
+        <label for='name'>Imię:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='text'
+          id='name'
+          {{on 'input' this.onNameChange}}
+        />
+      </section>
+      <section class='flex flex-col'>
+        <label for='surname'>Nazwisko:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='text'
+          id='surname'
+          {{on 'input' this.onSurnameChange}}
+        />
+      </section>
+      <section class='flex flex-col'>
+        <label for='nickname'>Nickname:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='text'
+          id='nickname'
+          {{on 'input' this.onNicknameChange}}
+        />
+      </section>
+      <section class='flex flex-col'>
+        <label for='email'>Email:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='text'
+          id='email'
+          {{on 'input' this.onEmailChange}}
+        />
+      </section>
+      <section class='flex flex-col'>
+        <label for='password'>Hasło:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='password'
+          id='password'
+          {{on 'input' this.onPasswordChange}}
+        />
+      </section>
+      <section class='flex flex-col'>
+        <label for='phoneNumber'>Numer telefonu:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='number'
+          id='phoneNumber'
+          {{on 'input' this.onPhoneNumberChange}}
+        />
+      </section>
+      <button
+        class='bg-blue-400 text-white py-1 rounded-lg mt-7'
+        type='submit'
+      >Zarejestruj</button>
+    </form>
+  </div>
+  <Footer />
 </div>
-<Footer />
 {{outlet}}

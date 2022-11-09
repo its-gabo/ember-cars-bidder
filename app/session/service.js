@@ -1,4 +1,5 @@
 import Service from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { storageFor } from 'ember-local-storage';
 import { inject as service } from '@ember/service';
 
@@ -7,8 +8,11 @@ export default class SessionService extends Service {
   @service router;
   @storageFor('logged-user') loggedUser;
 
-  async currentUser() {
-    return await this.store.findRecord('user', this.loggedUser.get('id'));
+  @tracked currentUser;
+
+  async setCurrentUser() {
+    const userId = this.loggedUser.get('id');
+    this.currentUser = await this.store.findRecord('user', userId);
   }
 
   get isUserLoggedIn() {

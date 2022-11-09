@@ -22,20 +22,25 @@
             type='number'
             id='price'
             class='rounded-lg pl-2'
-            {{on 'input' this.onBidChange}}
+            {{!-- {{on 'input' this.onBidChange}} --}}
           /><br />
           <button
             class='bg-white py-2 px-4 rounded-lg mt-4'
             type='button'
-            {{on 'click' this.onSubmit}}
+            {{!-- {{on 'click' this.onSubmit}} --}}
           >Licytuj</button>
         </div>
       {{else}}
         <button
           class='bg-blue-400 mt-7 py-2 px-4 text-white rounded-lg'
           type='button'
-          {{on 'click' this.onBuyNow}}
+          {{!-- {{on 'click' this.onBuyNow}} --}}
         >Kup teraz</button>
+      {{/if}}
+      {{#if this.isUserAnAuthor}}
+        <button>Nic</button>
+      {{else}}
+        <button>Kup</button>
       {{/if}}
     </div>
   </div>
