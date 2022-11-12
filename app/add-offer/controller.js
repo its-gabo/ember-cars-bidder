@@ -79,7 +79,7 @@ export default class AddOfferController extends Controller {
     await this.store
       .createRecord('offer', {
         ...this.car,
-        owner: this.session.currentUser(),
+        owner: this.session.currentUser,
       })
       .save();
     await this.router.transitionTo('offers');

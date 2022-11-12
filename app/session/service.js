@@ -12,7 +12,7 @@ export default class SessionService extends Service {
 
   async setCurrentUser() {
     const userId = this.loggedUser.get('id');
-    this.currentUser = await this.store.findRecord('user', userId);
+    this.currentUser = (await this.store.findRecord('user', userId)) || null;
   }
 
   get isUserLoggedIn() {
