@@ -1,5 +1,5 @@
 {{page-title 'Offers'}}
-<div class="min-h-screen flex flex-col">
+<div class='min-h-screen flex flex-col'>
   <Header />
   <div
     class='py-7 grow bg-gradient-to-tr from-red-300 to-blue-400 flex flex-col justify-center items-center font-poppins gap-y-5'
@@ -7,26 +7,32 @@
     {{#if this.doOffersExist}}
       {{#each this.model as |offer|}}
         {{#if offer.isActive}}
-        <LinkTo @route="offer.show" @model={{offer}}>
-            <div class="flex bg-white w-[85vw] rounded-lg px-7 py-3">
-              <img src={{offer.photoUrl}} alt={{offer.brand}} class="w-[10vw] aspect-auto object-fill mr-8">
-              <div class="grow flex flex-col">
-                  <div class="flex justify-between">
-                    <p class="text-lg">{{offer.brand}} {{offer.model}}, {{offer.yearOfProduction}}</p>
-                    <p class="text-lg">${{offer.price}}</p>
-                  </div>
-                  <div class="text-sm">
-                    <p>Stan: {{offer.condition}}</p>
-                    <p>Silnik: {{offer.engine}}</p>
-                    <p class="overflow-hidden">Opis: {{offer.description}}</p>
-                  </div>
+          <LinkTo @route='offer.show' @model={{offer.id}}>
+            <div class='flex bg-white w-[85vw] rounded-lg px-7 py-3'>
+              <img
+                src={{offer.photoUrl}}
+                alt={{offer.brand}}
+                class='w-[10vw] aspect-auto object-fill mr-8'
+              />
+              <div class='grow flex flex-col'>
+                <div class='flex justify-between'>
+                  <p class='text-lg'>{{offer.brand}}
+                    {{offer.model}},
+                    {{offer.yearOfProduction}}</p>
+                  <p class='text-lg'>${{offer.price}}</p>
+                </div>
+                <div class='text-sm'>
+                  <p>Stan: {{offer.condition}}</p>
+                  <p>Silnik: {{offer.engine}}</p>
+                  <p class='overflow-hidden'>Opis: {{offer.description}}</p>
+                </div>
               </div>
             </div>
-        </LinkTo>
+          </LinkTo>
         {{/if}}
       {{/each}}
     {{else}}
-      <p class="bg-white rounded-lg px-7 py-3">Brak istniejących ofert</p>
+      <p class='bg-white rounded-lg px-7 py-3'>Brak istniejących ofert</p>
     {{/if}}
   </div>
   <Footer />

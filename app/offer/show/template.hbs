@@ -1,48 +1,85 @@
 {{page-title 'Show'}}
-<div class="min-h-screen flex flex-col">
+<div class='min-h-screen flex flex-col'>
   <Header />
   <div
-    class='py-7 grow bg-gradient-to-tr from-red-300 to-blue-400 flex justify-center items-center font-poppins'
+    class='py-7 grow bg-gradient-to-tr from-red-300 to-blue-400 flex flex-col justify-center items-center font-poppins'
   >
     <div
-      class='py-7 px-10 bg-white rounded-lg w-4/5 min-w-[300px] max-w-[1000px]'
+      class='py-7 px-10 bg-white rounded-lg w-4/5 min-w-[300px] max-w-[800px]'
     >
-      <img src={{this.model.photoUrl}} alt={{this.model.brand}} class="mb-10 aspect-video">
-      <p class='text-xl font-semibold mb-5'>{{this.model.brand}}
-        {{this.model.model}}</p>
-      <p>Autor aukcji: {{this.model.owner.name}} {{this.model.owner.surname}}</p>
-      <p>Cena: ${{this.model.price}}</p>
-      <p>Rok produkcji: {{this.model.yearOfProduction}}</p>
-      <p>Stan pojazdu: {{this.model.condition}}</p>
-      <p>Opis pojazdu: {{this.model.description}}</p>
+      <img
+        src={{this.model.offer.photoUrl}}
+        alt={{this.model.offer.brand}}
+        class='mb-10 object-contain'
+      />
+      <p class='text-xl font-semibold mb-5'>{{this.model.offer.brand}}
+        {{this.model.offer.model}}</p>
+      <p>Autor aukcji:
+        {{this.model.offer.owner.name}}
+        {{this.model.offer.owner.surname}}</p>
+      <p>Cena: ${{this.model.offer.price}}</p>
+      <p>Rok produkcji: {{this.model.offer.yearOfProduction}}</p>
+      <p>Stan pojazdu: {{this.model.offer.condition}}</p>
+      <p>Opis pojazdu: {{this.model.offer.description}}</p>
       {{#if this.isOfferAnAuction}}
-        <div class='mt-7 bg-blue-400 px-7 py-4 rounded-lg'>
-          <label class='text-lg' for='price'>Cena licytacji: </label>
-          <input
-            type='number'
-            id='price'
-            class='rounded-lg pl-2'
-            {{!-- {{on 'input' this.onBidChange}} --}}
-          /><br />
+        {{#if this.isUserAnAuthor}}
+          <div class='mt-7 bg-blue-400 px-7 py-4 rounded-lg'>
+            <label class='text-lg' for='price'>Cena licytacji: </label>
+            <input
+              type='number'
+              id='price'
+              class='rounded-lg pl-2 cursor-not-allowed'
+              disabled='true'
+            /><br />
+            <button
+              class='bg-gray-300 py-2 px-4 rounded-lg mt-4 cursor-not-allowed'
+              type='button'
+              disabled='true'
+            >Licytuj</button>
+          </div>
+        {{else}}
+          <div class='mt-7 bg-blue-400 px-7 py-4 rounded-lg'>
+            <label class='text-lg' for='price'>Cena licytacji: </label>
+            <input
+              type='number'
+              id='price'
+              class='rounded-lg pl-2'
+              {{on 'input' this.onBidValueChange}}
+            /><br />
+            <button
+              class='bg-white py-2 px-4 rounded-lg mt-4 cursor-pointer'
+              type='submit'
+              {{on 'click' this.onAddBid}}
+            >Licytuj</button>
+          </div>
+        {{/if}}
+      {{else}}
+        {{#if this.isUserAnAuthor}}
           <button
-            class='bg-white py-2 px-4 rounded-lg mt-4'
+            class='bg-blue-200 mt-7 py-2 px-4 text-white rounded-lg cursor-not-allowed'
             type='button'
-            {{!-- {{on 'click' this.onSubmit}} --}}
-          >Licytuj</button>
-        </div>
-      {{else}}
-        <button
-          class='bg-blue-400 mt-7 py-2 px-4 text-white rounded-lg'
-          type='button'
-          {{!-- {{on 'click' this.onBuyNow}} --}}
-        >Kup teraz</button>
-      {{/if}}
-      {{#if this.isUserAnAuthor}}
-        <button>Nic</button>
-      {{else}}
-        <button>Kup</button>
+            disabled='true'
+          >Kup teraz</button>
+        {{else}}
+          <button
+            class='bg-blue-400 mt-7 py-2 px-4 text-white rounded-lg cursor-pointer'
+            type='button'
+            {{on 'click' this.onBuyNow}}
+          >Kup teraz</button>
+        {{/if}}
       {{/if}}
     </div>
+    {{#if this.isOfferAnAuction}}
+      <div
+        class='mt-6 py-7 px-10 bg-white rounded-lg w-4/5 min-w-[300px] max-w-[800px]'
+      >
+        <div class='font-bold text-lg'>Oferty:</div>
+        {{#each this.model.bids as |bid|}}
+          <div><b>{{bid.user.name}} {{bid.user.surname}}</b>:
+            {{bid.value}}$</div>
+        {{/each}}
+      </div>
+    {{/if}}
   </div>
   <Footer />
 </div>

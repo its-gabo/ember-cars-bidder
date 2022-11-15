@@ -1,78 +1,79 @@
 import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
-// import { action } from '@ember/object';
-// import { isEmpty } from '@ember/utils';
-import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 export default class OfferShowController extends Controller {
-  @service store;
   @service session;
+  @service store;
   @service router;
-  @tracked bid;
-
-  get isUserAnAuthor() {
-    const user = this.session.currentUser.id;
-    const owner = this.model.owner.id;
-    return owner === user.id;
-  }
-
-  // async isBidHighest(bidPrice) {
-  //   const bids = await this.store.query('bid', {
-  //     filter: { offer: this.model },
-  //   });
-
-  //   if ((await bids.length) == 0) {
-  //     return true;
-  //   }
-
-  //   const highestBid = await bids.sortBy('value').reverse();
-
-  //   if ((await highestBid) > bidPrice) {
-  //     return false;
-  //   }
-
-  //   return true;
-  // }
 
   get isOfferAnAuction() {
-    return this.model.type === 'auction' ? true : false;
+    return this.model.offer.type === 'auction';
   }
 
-  // @action
-  // onBidChange({ target: { value } }) {
-  //   this.bid = value;
-  // }
+  get isUserAnAuthor() {
+    if (this.session.currentUser === null) {
+      return false;
+    }
 
-  // @action
-  // async onBuyNow() {
-  //   if (await this.isUserAnAuthor()) {
-  //     return;
-  //   }
+    return (
+      this.session.currentUser.get('id') === this.model.offer.owner.get('id')
+    );
+  }
 
-  //   this.model.set('endsAt', new Date());
-  //   this.model.set('isActive', false);
-  //   this.model.save();
-  //   this.router.transitionTo('offers');
-  // }
+  get highestBid() {
+    if (this.model.bids.length === 0) {
+      return 0;
+    }
 
-  // @action
-  // async onSubmit() {
-  //   if (isEmpty(this.bid)) {
-  //     return;
-  //   }
+    if (this.model.bids.length === 1) {
+      return this.model.bids._objects[0].value;
+    }
 
-  //   if (await this.isUserAnAuthor()) {
-  //     return;
-  //   }
+    let highestBid = this.model.bids._objects[0].value;
 
-  //   if (await this.isBidHighest(this.bid)) {
-  //     this.store
-  //       .createRecord('bid', {
-  //         value: this.bid,
-  //         offer: this.model,
-  //         user: await this.session.currentUser(),
-  //       })
-  //       .save();
-  //   }
-  // }
+    highestBid = this.model.bids._objects.filter((bid) => {
+      return bid.value > highestBid;
+    });
+
+    return highestBid[0].value;
+  }
+
+  @action
+  onBuyNow() {
+    if (this.session.currentUser === null) {
+      this.router.transitionTo('login');
+      return;
+    }
+
+    this.model.offer.isActive = false;
+    this.model.offer.save();
+    this.router.transitionTo('offers');
+  }
+
+  @action
+  onBidValueChange({ target: { value } }) {
+    console.log(this.highestBid);
+    this.bidValue = value;
+  }
+
+  @action
+  async onAddBid() {
+    if (this.session.currentUser === null) {
+      this.router.transitionTo('login');
+      return;
+    }
+
+    if (this.bidValue > this.highestBid) {
+      await this.store
+        .createRecord('bid', {
+          user: this.session.currentUser,
+          value: this.bidValue,
+          offer: this.model.offer,
+        })
+        .save();
+
+      window.location.href = `/offer/${this.model.offer.id}`;
+    }
+  }
 }

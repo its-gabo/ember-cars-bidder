@@ -44,7 +44,6 @@ export default class AddOfferController extends Controller {
 
   @action
   onOfferTypeChange({ target: { value } }) {
-    console.log(value);
     this.car.type = value;
   }
 
