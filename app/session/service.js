@@ -12,7 +12,13 @@ export default class SessionService extends Service {
 
   async setCurrentUser() {
     const userId = this.loggedUser.get('id');
-    this.currentUser = (await this.store.findRecord('user', userId)) || null;
+
+    if (userId == null) {
+      this.currentUser = null;
+      return;
+    }
+
+    this.currentUser = await this.store.findRecord('user', userId);
   }
 
   get isUserLoggedIn() {
@@ -36,6 +42,7 @@ export default class SessionService extends Service {
 
   logoutUser() {
     this.loggedUser.set('id', null);
+    this.setCurrentUser();
     this.router.transitionTo('home');
   }
 }
