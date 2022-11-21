@@ -12,6 +12,7 @@ export default class OfferModel extends Model {
   @attr('string') type;
   @attr('number') price;
   @attr('boolean', { defaultValue: true }) isActive;
+  @attr('boolean', { defaultValue: false }) haveBeenBought;
   @attr('string') photoUrl;
   @hasMany('bid') bids;
   @belongsTo('user') owner;

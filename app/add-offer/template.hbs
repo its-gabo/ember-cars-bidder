@@ -93,6 +93,15 @@
         />
       </section>
       <section class='flex flex-col w-full'>
+        <label for='endsAt'>Oferta powinna się zakończyć:</label>
+        <input
+          class='bg-blue-200 rounded-md px-1'
+          type='date'
+          id='endsAt'
+          {{on 'input' this.onEndsAtChange}}
+        />
+      </section>
+      <section class='flex flex-col w-full'>
         <label for='description'>Opis:</label>
         <textarea
           class='bg-blue-200 rounded-md px-1 resize-none'

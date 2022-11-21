@@ -58,6 +58,11 @@ export default class AddOfferController extends Controller {
   }
 
   @action
+  onEndsAtChange({ target: { value } }) {
+    this.car.endsAt = new Date(value);
+  }
+
+  @action
   async onSubmit(event) {
     event.preventDefault();
 
@@ -69,7 +74,8 @@ export default class AddOfferController extends Controller {
       isEmpty(this.car.condition) ||
       isEmpty(this.car.price) ||
       isEmpty(this.car.description) ||
-      isEmpty(this.car.photoUrl)
+      isEmpty(this.car.photoUrl) ||
+      isEmpty(this.car.endsAt)
     ) {
       return;
     }
