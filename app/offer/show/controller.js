@@ -46,6 +46,7 @@ export default class OfferShowController extends Controller {
       return;
     }
 
+    this.model.offer.haveBeenBought = true;
     this.model.offer.isActive = false;
     this.model.offer.save();
     this.router.transitionTo('offers');
@@ -53,7 +54,6 @@ export default class OfferShowController extends Controller {
 
   @action
   onBidValueChange({ target: { value } }) {
-    console.log(this.highestBid);
     this.bidValue = value;
   }
 

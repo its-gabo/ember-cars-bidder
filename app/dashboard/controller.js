@@ -16,29 +16,26 @@ export default class DashboardController extends Controller {
     return activeOffers.length;
   }
 
-  get unactiveBuyNowOffers() {
-    let unactiveOffers = [];
+  get boughtCars() {
+    let boughtCars = [];
 
     this.model.forEach((element) => {
-      if (
-        element.get('isActive') == false &&
-        element.get('type') == 'buy_now'
-      ) {
-        unactiveOffers.push(element);
+      if (element.get('haveBeenBought') == true) {
+        boughtCars.push(element);
       }
     });
 
-    return unactiveOffers;
+    return boughtCars;
   }
 
   get highestCarPrice() {
     let highestPrice = 0;
 
-    if (this.unactiveBuyNowOffers.length == 1) {
-      return this.unactiveBuyNowOffers[0].get('price');
+    if (this.boughtCars.length == 1) {
+      return this.boughtCars[0].get('price');
     }
 
-    this.unactiveBuyNowOffers.forEach((element) => {
+    this.boughtCars.forEach((element) => {
       if (element.get('price') > highestPrice) {
         highestPrice = element.get('price');
       }
@@ -67,5 +64,31 @@ export default class DashboardController extends Controller {
 
   get carPrice() {
     return this.mostExpensiveCarSold.get('price');
+  }
+
+  get carImg() {
+    return this.mostExpensiveCarSold.get('photoUrl');
+  }
+
+  get newestOffer() {
+    let offerWithNewestDate = null;
+    let distance = Infinity;
+
+    const currentDateTime = new Date().getTime();
+
+    this.model.forEach((offer) => {
+      if (!offer.isActive) {
+        return;
+      }
+
+      let dateSubtraction =
+        currentDateTime - new Date(offer.createdAt).getTime();
+
+      if (dateSubtraction < distance) {
+        offerWithNewestDate = offer;
+      }
+    });
+
+    return offerWithNewestDate;
   }
 }

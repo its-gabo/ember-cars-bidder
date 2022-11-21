@@ -7,30 +7,31 @@
     <div class='flex flex-col gap-y-4'>
       <div class='dashboard-element flex flex-col items-center gap-y-5'>
         <p class='font-medium'>Najdrożej sprzedany samochód</p>
-        {{#if this.doUnactiveOffersExist}}
-          <div class='text-base flex justify-between mt-5'>
+        {{#if this.boughtCars}}
+          <div class='text-base flex justify-between mt-5 w-full'>
             <p>{{this.carBrand}} {{this.carModel}}</p>
             <p>${{this.carPrice}}</p>
           </div>
+          <img
+            src={{this.carImg}}
+            alt={{this.carBrand}}
+            class='w-1/2 aspect-square'
+          />
         {{else}}
-          <p class="text-lg">Brak sprzedanych samochodów</p>
+          <p class='text-lg'>Brak sprzedanych samochodów</p>
         {{/if}}
       </div>
-      <div class="dashboard-element flex justify-between items-center">
+      <div class='dashboard-element flex justify-between items-center'>
         <p class='font-medium'>Ilość otwartych aukcji</p>
         <span
           class='px-4 py-2 rounded-lg bg-gradient-to-tr from-red-300 to-blue-400 text-white text-base lg:text-lg'
         >{{this.numberOfActiveOffers}}</span>
       </div>
-      <div
-        class='dashboard-element text-base'
-      >
-        <p class='text-lg lg:text-2xl font-medium mb-5'>Ostatnia zakończona
-          aukcja</p>
-        <p>Data zakończenia: 30-06-2022</p>
-        <p>Marka: Ford</p>
-        <p>Model: Mustang GT</p>
-        <p>Cena końcowa: $25,000</p>
+      <div class='dashboard-element text-base'>
+        <p class='text-lg lg:text-2xl font-medium mb-5'>Najnowsza aukcja</p>
+        <p>Marka: {{this.newestOffer.brand}}</p>
+        <p>Model: {{this.newestOffer.model}}</p>
+        <p>Cena końcowa: ${{this.newestOffer.price}}</p>
       </div>
     </div>
   </div>
